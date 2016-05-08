@@ -1,0 +1,1 @@
+# ambari-mysql-cluster-plugin
