@@ -2,9 +2,9 @@
 
 This plugin is aimed at installing, deploying and managing mysql cluster by ambari.
 
-** NOTE 1: The testing operation system is CentOS-6.5 and the environment is clean which means no mysql-related rpms installed before. **
+##### NOTE 1: The testing operation system is CentOS-6.5 and the environment is clean which means no mysql-related rpms installed before.
 
-** NOTE 2: It lacks comprehensive test coverage. Of course contributions are welcome to make its more stable and useful. **
+##### NOTE 2: It lacks comprehensive test coverage. Of course contributions are welcome to make its more stable and useful.
 
 ## Version
 
