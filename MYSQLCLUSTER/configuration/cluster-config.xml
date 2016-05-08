@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+
+<configuration supports_final="false">
+
+    <property require-input = "true">
+        <name>content</name>
+        <value>
+[ndbd default]
+# Options affecting ndbd processes on all data nodes:
+NoOfReplicas=2    # Number of replicas
+DataMemory=80M    # How much memory to allocate for data storage
+IndexMemory=18M   # How much memory to allocate for index storage
+# For DataMemory and IndexMemory, we have used the
+# default values. Since the "world" database takes up
+# only about 500KB, this should be more than enough for
+# this example Cluster setup.
+
+[tcp default]
+# TCP/IP options:
+portnumber=2202   # This the default; however, you can use any
+# port that is free for all the hosts in the cluster
+# Note: It is recommended that you do not specify the port
+# number at all and simply allow the default value to be used
+# instead
+
+[ndb_mgmd]
+# Management process options:
+hostname={{mgm_host}}         # Hostname or IP address of MGM node
+datadir=/var/lib/mysql-cluster  # Directory for MGM node log files
+
+# one [ndbd] section per data node
+[ndbd]
+# Options for data node
+hostname=slave1.hp         # Hostname or IP address
+datadir=/usr/local/mysql/data   # Directory for this data node's data files
+
+[ndbd]
+# Options for data node
+hostname=slave2.hp         # Hostname or IP address
+datadir=/usr/local/mysql/data   # Directory for this data node's data files
+
+[mysqld]
+# SQL node options:
+hostname=slave1.hp         # Hostname or IP address
+
+[mysqld]
+# SQL node options:
+hostname=slave2.hp         # Hostname or IP address
+        </value>
+        <description>Mysql Cluster management node configuration</description>
+    </property>
+
+</configuration>

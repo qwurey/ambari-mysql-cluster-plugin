@@ -1,0 +1,33 @@
+[ndbd default]
+# Options affecting ndbd processes on all data nodes:
+NoOfReplicas=2    # Number of replicas
+DataMemory=80M    # How much memory to allocate for data storage
+IndexMemory=18M   # How much memory to allocate for index storage
+                  # For DataMemory and IndexMemory, we have used the
+                  # default values. Since the "world" database takes up
+                  # only about 500KB, this should be more than enough for
+                  # this example Cluster setup.
+[ndb_mgmd]
+# Management process options:
+hostname=dp04           # Hostname or IP address of MGM node
+datadir=/var/lib/mysql-cluster  # Directory for MGM node log files
+
+[ndbd]
+# Options for data node "A":
+                                # (one [ndbd] section per data node)
+hostname=dp03           # Hostname or IP address
+datadir=/usr/local/mysql/data   # Directory for this data node's data files
+
+[ndbd]
+# Options for data node "B":
+hostname=dp01           # Hostname or IP address
+datadir=/usr/local/mysql/data   # Directory for this data node's data files
+
+[mysqld]
+# SQL node options:
+hostname=dp02           # Hostname or IP address
+                                # (additional mysqld connections can be
+                                # specified for this node for various
+                                # purposes such as running ndb_restore)
+[mysqld]
+hostname=dp01

@@ -1,0 +1,17 @@
+[client]
+socket=/var/lib/mysql/mysql.sock
+
+[mysqld]
+max_connections=100
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+
+ndbcluster
+ndb-connectstring=dp04
+
+[mysqld_safe]
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+
+[mysql_cluster]
+ndb-connectstring=dp04
